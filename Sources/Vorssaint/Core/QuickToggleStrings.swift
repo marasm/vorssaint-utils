@@ -202,8 +202,8 @@ extension QuickToggleFeatureStrings {
         shortcutDarkMode: "Тёмный режим",
         shortcutEmptyTrash: "Очистить Корзину",
         shortcutEjectDisks: "Извлечь диски",
-        shortcutHiddenFiles: "Показать/скрыть скрытые",
-        shortcutDesktopIcons: "Показать/скрыть значки",
+        shortcutHiddenFiles: "Показать/скрыть скрытые файлы",
+        shortcutDesktopIcons: "Показать/скрыть значки рабочего стола",
         shortcutLockScreen: "Заблокировать экран",
         shortcutDisplayOff: "Выключить экран",
         shortcutScreenSaver: "Запустить заставку"
