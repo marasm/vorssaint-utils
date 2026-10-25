@@ -953,6 +953,8 @@ extension Strings {
         shortcutTakeOverCaption: "macOS получает клавишу обратно, как только Vorssaint не запущен или эта функция выключена.",
         shortcutTakeOverDismiss: "Не перехватывать",
         shortcutUnavailable: "macOS отклонила это сочетание клавиш. Выберите другое.",
+        shortcutNotAssigned: "Не назначено",
+        shortcuts: "Горячие клавиши",
         shelfShortcutToggle: "Горячая клавиша полки",
         switcherUsageHintFormat: "Удерживайте %@ для навигации; отпустите, чтобы активировать окно. Shift или ← возвращают назад; W закрывает окно; Q завершает приложение; Esc отменяет.",
         musicBlockSection: "Медиаклавиши",

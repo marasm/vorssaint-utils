@@ -724,6 +724,14 @@ enum GlobalShortcutRole: CaseIterable, Identifiable {
     case keyboardBrightnessIncrease
     case pointerNextDisplay
     case notch
+    case quickToggleDarkMode
+    case quickToggleEmptyTrash
+    case quickToggleEjectDisks
+    case quickToggleHiddenFiles
+    case quickToggleDesktopIcons
+    case quickToggleLockScreen
+    case quickToggleDisplayOff
+    case quickToggleScreenSaver
 
     var id: String { storageKey }
 
@@ -759,10 +767,18 @@ enum GlobalShortcutRole: CaseIterable, Identifiable {
         case .keyboardBrightnessIncrease: return DefaultsKey.keyboardBrightnessIncreaseShortcut
         case .pointerNextDisplay: return DefaultsKey.pointerDisplayShortcut
         case .notch: return DefaultsKey.notchShortcut
+        case .quickToggleDarkMode: return DefaultsKey.panelToggleDarkModeShortcut
+        case .quickToggleEmptyTrash: return DefaultsKey.panelToggleEmptyTrashShortcut
+        case .quickToggleEjectDisks: return DefaultsKey.panelToggleEjectDisksShortcut
+        case .quickToggleHiddenFiles: return DefaultsKey.panelToggleHiddenFilesShortcut
+        case .quickToggleDesktopIcons: return DefaultsKey.panelToggleDesktopIconsShortcut
+        case .quickToggleLockScreen: return DefaultsKey.panelToggleLockScreenShortcut
+        case .quickToggleDisplayOff: return DefaultsKey.panelToggleDisplayOffShortcut
+        case .quickToggleScreenSaver: return DefaultsKey.panelToggleScreenSaverShortcut
         }
     }
 
-    var defaultShortcut: GlobalShortcut {
+    var defaultShortcut: GlobalShortcut? {
         switch self {
         case .keepAwake: return .keepAwakeDefault
         case .shelf: return .shelfDefault
@@ -794,11 +810,23 @@ enum GlobalShortcutRole: CaseIterable, Identifiable {
         case .keyboardBrightnessIncrease: return .keyboardBrightnessIncreaseDefault
         case .pointerNextDisplay: return .pointerNextDisplayDefault
         case .notch: return .notchDefault
+        case .quickToggleDarkMode: return nil
+        case .quickToggleEmptyTrash: return nil
+        case .quickToggleEjectDisks: return nil
+        case .quickToggleHiddenFiles: return nil
+        case .quickToggleDesktopIcons: return nil
+        case .quickToggleLockScreen: return nil
+        case .quickToggleDisplayOff: return nil
+        case .quickToggleScreenSaver: return nil
         }
     }
 
-    var savedShortcut: GlobalShortcut {
-        GlobalShortcut.saved(for: storageKey, fallback: defaultShortcut)
+    var savedShortcut: GlobalShortcut? {
+        if let raw = UserDefaults.standard.string(forKey: storageKey),
+           let shortcut = GlobalShortcut(storageValue: raw) {
+            return shortcut
+        }
+        return defaultShortcut
     }
 
     /// The switcher's event tap can handle its native combinations without
@@ -858,6 +886,14 @@ enum GlobalShortcutRole: CaseIterable, Identifiable {
             return FeatureStrings.brightness(L10n.shared.language).keyboardBrightnessIncrease
         case .pointerNextDisplay: return PointerDisplayStrings.localized(L10n.shared.language).title
         case .notch: return FeatureStrings.notch(L10n.shared.language).title
+        case .quickToggleDarkMode: return FeatureStrings.quickToggles(L10n.shared.language).shortcutDarkMode
+        case .quickToggleEmptyTrash: return FeatureStrings.quickToggles(L10n.shared.language).shortcutEmptyTrash
+        case .quickToggleEjectDisks: return FeatureStrings.quickToggles(L10n.shared.language).shortcutEjectDisks
+        case .quickToggleHiddenFiles: return FeatureStrings.quickToggles(L10n.shared.language).shortcutHiddenFiles
+        case .quickToggleDesktopIcons: return FeatureStrings.quickToggles(L10n.shared.language).shortcutDesktopIcons
+        case .quickToggleLockScreen: return FeatureStrings.quickToggles(L10n.shared.language).shortcutLockScreen
+        case .quickToggleDisplayOff: return FeatureStrings.quickToggles(L10n.shared.language).shortcutDisplayOff
+        case .quickToggleScreenSaver: return FeatureStrings.quickToggles(L10n.shared.language).shortcutScreenSaver
         }
     }
 
@@ -916,6 +952,10 @@ enum GlobalShortcutRole: CaseIterable, Identifiable {
             return [DefaultsKey.keyboardBrightnessShortcutsEnabled]
         case .pointerNextDisplay: return [DefaultsKey.pointerDisplayEnabled]
         case .notch: return [DefaultsKey.notchEnabled, DefaultsKey.notchShortcutEnabled]
+        case .quickToggleDarkMode, .quickToggleEmptyTrash, .quickToggleEjectDisks,
+             .quickToggleHiddenFiles, .quickToggleDesktopIcons, .quickToggleLockScreen,
+             .quickToggleDisplayOff, .quickToggleScreenSaver:
+            return []
         }
     }
 
@@ -948,6 +988,10 @@ enum GlobalShortcutRole: CaseIterable, Identifiable {
         case .keyboardBrightnessDecrease, .keyboardBrightnessIncrease: return .brightness
         case .pointerNextDisplay: return .windowLayout
         case .notch: return .notch
+        case .quickToggleDarkMode, .quickToggleEmptyTrash, .quickToggleEjectDisks,
+             .quickToggleHiddenFiles, .quickToggleDesktopIcons, .quickToggleLockScreen,
+             .quickToggleDisplayOff, .quickToggleScreenSaver:
+            return .quickToggles
         }
     }
 
@@ -970,6 +1014,10 @@ enum GlobalShortcutRole: CaseIterable, Identifiable {
     var supportsTakeOver: Bool {
         switch self {
         case .switcher, .switcherWindow, .radialMenu: return false
+        case .quickToggleDarkMode, .quickToggleEmptyTrash, .quickToggleEjectDisks,
+             .quickToggleHiddenFiles, .quickToggleDesktopIcons, .quickToggleLockScreen,
+             .quickToggleDisplayOff, .quickToggleScreenSaver:
+            return true
         default: return true
         }
     }

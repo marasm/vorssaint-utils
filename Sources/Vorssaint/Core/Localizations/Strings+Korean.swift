@@ -953,6 +953,8 @@ extension Strings {
         shortcutTakeOverCaption: "Vorssaint가 실행 중이 아니거나 이 기능이 꺼져 있으면 macOS가 키를 다시 가져갑니다.",
         shortcutTakeOverDismiss: "가져오지 않기",
         shortcutUnavailable: "macOS가 이 단축키를 거부했습니다. 다른 단축키를 선택하세요.",
+        shortcutNotAssigned: "할당되지 않음",
+        shortcuts: "단축키",
         shelfShortcutToggle: "선반 단축키",
         switcherUsageHintFormat: "%@을(를) 누른 채 이동하고 놓으면 윈도우가 활성화됩니다. Shift 또는 ←로 뒤로 이동하고, W로 윈도우를 닫고, Q로 앱을 종료하며, Esc로 취소합니다.",
         musicBlockSection: "미디어 키",

@@ -952,6 +952,8 @@ extension Strings {
         shortcutTakeOverCaption: "macOS recupera la tecla siempre que Vorssaint no esté abierto o esta función esté desactivada.",
         shortcutTakeOverDismiss: "No tomar el control",
         shortcutUnavailable: "macOS rechazó este atajo. Elige otro.",
+        shortcutNotAssigned: "No asignado",
+        shortcuts: "Atajos",
         shelfShortcutToggle: "Atajo del estante",
         switcherUsageHintFormat: "Mantén %@ para navegar; suelta para activar la ventana. Mayúsculas o ← retrocede; W cierra la ventana; Q cierra la app; Esc cancela.",
         musicBlockSection: "Teclas multimedia",

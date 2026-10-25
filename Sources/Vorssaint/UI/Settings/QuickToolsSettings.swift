@@ -98,6 +98,18 @@ struct QuickToolsSettings: View {
                 }
                 .settingsFormSectionAnchor(.quickToggles)
                 .onAppear { brightness.refreshKeyboardLight() }
+
+                // Per-toggle global shortcuts (micMute and keyboardLight have
+                // their own shortcut rows above; the rest live here).
+                Section {
+                    ForEach(QuickToggleAction.allCases.filter { action in
+                        action != .micMute && action != .keyboardLight
+                    }, id: \.self) { action in
+                        QuickToggleShortcutRow(action: action)
+                    }
+                } header: {
+                    Text(l10n.s.shortcuts)
+                }
             }
 
             if AppFeature.micMute.isAvailable {
@@ -324,5 +336,114 @@ private struct CameraPermissionRow: View {
             }
             .controlSize(.small)
         }
+    }
+}
+
+/// A single quick-toggle shortcut row: label, recorder, and clear button.
+/// No enable toggle — the shortcut is active when assigned, inactive when
+/// empty. Uses the same ShortcutRecorderButton as the rest of the app.
+private struct QuickToggleShortcutRow: View {
+    @ObservedObject private var l10n = L10n.shared
+    @State private var isRecording = false
+    @State private var errorText: String?
+
+    let action: QuickToggleAction
+
+    @AppStorage private var shortcutValue: String
+
+    private var hasShortcut: Bool {
+        !shortcutValue.isEmpty
+    }
+
+    private var currentShortcut: GlobalShortcut? {
+        GlobalShortcut(storageValue: shortcutValue)
+    }
+
+    init(action: QuickToggleAction) {
+        self.action = action
+        let key: String
+        switch action {
+        case .darkMode: key = DefaultsKey.panelToggleDarkModeShortcut
+        case .emptyTrash: key = DefaultsKey.panelToggleEmptyTrashShortcut
+        case .ejectDisks: key = DefaultsKey.panelToggleEjectDisksShortcut
+        case .hiddenFiles: key = DefaultsKey.panelToggleHiddenFilesShortcut
+        case .desktopIcons: key = DefaultsKey.panelToggleDesktopIconsShortcut
+        case .lockScreen: key = DefaultsKey.panelToggleLockScreenShortcut
+        case .displayOff: key = DefaultsKey.panelToggleDisplayOffShortcut
+        case .screenSaver: key = DefaultsKey.panelToggleScreenSaverShortcut
+        case .micMute, .keyboardLight: key = ""
+        }
+        _shortcutValue = AppStorage(wrappedValue: "", key)
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(spacing: 8) {
+                Text(toggleTitle)
+                Spacer()
+                HStack(spacing: 8) {
+                    if hasShortcut, let shortcut = currentShortcut {
+                        Text(shortcut.displayString)
+                            .font(.caption.monospacedDigit())
+                            .foregroundStyle(.secondary)
+                    }
+                    ShortcutRecorderButton(
+                        shortcut: currentShortcut ?? GlobalShortcut(keyCode: 0, modifiers: []),
+                        isEnabled: true,
+                        waitingTitle: l10n.s.shortcutPressKeys,
+                        emptyTitle: hasShortcut ? nil : l10n.s.shortcutNotAssigned,
+                        clearAction: hasShortcut ? { clearShortcut() } : nil,
+                        notCapturedAction: { errorText = l10n.s.shortcutNotCaptured },
+                        recordingChanged: { recording in
+                            isRecording = recording
+                            if recording { errorText = nil }
+                        },
+                        invalidAction: { errorText = l10n.s.shortcutInvalid },
+                        captureAction: { saveShortcut($0) }
+                    )
+                    .frame(width: 108)
+                    Button(l10n.s.shortcutReset) {
+                        clearShortcut()
+                    }
+                    .disabled(!hasShortcut)
+                }
+            }
+            if isRecording {
+                Text(l10n.s.shortcutPressKeys)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            if let errorText {
+                Text(errorText)
+                    .font(.caption)
+                    .foregroundStyle(.orange)
+            }
+        }
+    }
+
+    private var toggleTitle: String {
+        switch action {
+        case .darkMode: return FeatureStrings.quickToggles(l10n.language).shortcutDarkMode
+        case .emptyTrash: return FeatureStrings.quickToggles(l10n.language).shortcutEmptyTrash
+        case .ejectDisks: return FeatureStrings.quickToggles(l10n.language).shortcutEjectDisks
+        case .hiddenFiles: return FeatureStrings.quickToggles(l10n.language).shortcutHiddenFiles
+        case .desktopIcons: return FeatureStrings.quickToggles(l10n.language).shortcutDesktopIcons
+        case .lockScreen: return FeatureStrings.quickToggles(l10n.language).shortcutLockScreen
+        case .displayOff: return FeatureStrings.quickToggles(l10n.language).shortcutDisplayOff
+        case .screenSaver: return FeatureStrings.quickToggles(l10n.language).shortcutScreenSaver
+        case .micMute, .keyboardLight:
+            // Excluded from the section; unreachable but required for exhaustiveness.
+            return ""
+        }
+    }
+
+    private func saveShortcut(_ shortcut: GlobalShortcut) {
+        shortcutValue = shortcut.storageValue
+        QuickTogglesService.shared.syncWithPreferences()
+    }
+
+    private func clearShortcut() {
+        shortcutValue = ""
+        QuickTogglesService.shared.syncWithPreferences()
     }
 }

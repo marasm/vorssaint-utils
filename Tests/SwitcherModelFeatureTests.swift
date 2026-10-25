@@ -3319,15 +3319,16 @@ enum SwitcherModelFeatureTests {
                "window layout shortcuts do not conflict with each other by default")
         let globalShortcutValues = GlobalShortcutRole.allCases
             .compactMap { registeredDefaults[$0.storageKey] as? String }
+            .filter { !$0.isEmpty }
         suite.expect(Set(assignedLayoutShortcutValues).intersection(globalShortcutValues).isEmpty,
                "window layout shortcuts do not conflict with other global shortcuts by default")
         // Two features shipping the same combination means one of them is dead
         // on arrival: the second registration is simply refused by the system,
         // and which one loses depends on the order they happen to sync in.
         suite.expect(Set(globalShortcutValues).count == globalShortcutValues.count,
-               "no two features ship the same default combination")
-        suite.expect(globalShortcutValues.count == GlobalShortcutRole.allCases.count,
-               "every role ships with a default combination registered")
+               "no two features ship the same assigned default combination")
+        suite.expect(globalShortcutValues.count == GlobalShortcutRole.allCases.count - 8,
+               "every role ships with a default combination registered (8 quick toggles start empty)")
         suite.expect(GlobalShortcut(keyCode: Int64(kVK_ISO_Section),
                               modifiers: [.control, .option, .command]).isValid,
                "the extra ISO key (paragraph/caret above Tab) is recordable as a shortcut")

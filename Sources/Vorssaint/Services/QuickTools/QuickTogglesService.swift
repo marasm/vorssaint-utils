@@ -204,8 +204,96 @@ final class QuickTogglesService: ObservableObject {
 
     // MARK: - Internals
 
+    // Per-toggle global shortcut hotkeys.
+    private let darkModeHotkey = QuickToolHotkey(id: 1)
+    private let emptyTrashHotkey = QuickToolHotkey(id: 2)
+    private let ejectDisksHotkey = QuickToolHotkey(id: 3)
+    private let hiddenFilesHotkey = QuickToolHotkey(id: 4)
+    private let desktopIconsHotkey = QuickToolHotkey(id: 5)
+    private let lockScreenHotkey = QuickToolHotkey(id: 6)
+    private let displayOffHotkey = QuickToolHotkey(id: 7)
+    private let screenSaverHotkey = QuickToolHotkey(id: 8)
+
     private var available: Bool {
         AppFeature.quickToggles.isAvailable
+    }
+
+    /// Re-reads every toggle shortcut from defaults and registers/unregisters
+    /// the Carbon hotkeys accordingly. Called after a shortcut assignment or
+    /// clear, and once at app launch.
+    func syncWithPreferences() {
+        syncShortcut(.darkMode, darkModeHotkey) {
+            self.toggleDarkMode()
+        }
+        syncShortcut(.emptyTrash, emptyTrashHotkey) {
+            self.emptyTrashConfirmed()
+        }
+        syncShortcut(.ejectDisks, ejectDisksHotkey) {
+            self.ejectAllDisks()
+        }
+        syncShortcut(.hiddenFiles, hiddenFilesHotkey) {
+            self.toggleHiddenFiles()
+        }
+        syncShortcut(.desktopIcons, desktopIconsHotkey) {
+            self.toggleDesktopIcons()
+        }
+        syncShortcut(.lockScreen, lockScreenHotkey) {
+            self.lockScreen()
+        }
+        syncShortcut(.displayOff, displayOffHotkey) {
+            self.turnDisplayOff()
+        }
+        syncShortcut(.screenSaver, screenSaverHotkey) {
+            self.startScreenSaver()
+        }
+    }
+
+    private var shortcutKey: String {
+        switch QuickToggleAction(rawValue: "") {
+        case .darkMode: return DefaultsKey.panelToggleDarkModeShortcut
+        case .emptyTrash: return DefaultsKey.panelToggleEmptyTrashShortcut
+        case .ejectDisks: return DefaultsKey.panelToggleEjectDisksShortcut
+        case .hiddenFiles: return DefaultsKey.panelToggleHiddenFilesShortcut
+        case .desktopIcons: return DefaultsKey.panelToggleDesktopIconsShortcut
+        case .lockScreen: return DefaultsKey.panelToggleLockScreenShortcut
+        case .displayOff: return DefaultsKey.panelToggleDisplayOffShortcut
+        case .screenSaver: return DefaultsKey.panelToggleScreenSaverShortcut
+        case .micMute, .keyboardLight:
+            return ""
+        case .none:
+            return ""
+        }
+    }
+
+    private func syncShortcut(_ action: QuickToggleAction,
+                              _ hotkey: QuickToolHotkey,
+                              onPress: @escaping () -> Void) {
+        hotkey.onPress = onPress
+        let key = shortcutKey(for: action)
+        guard let raw = UserDefaults.standard.string(forKey: key),
+              !raw.isEmpty,
+              let shortcut = GlobalShortcut(storageValue: raw)
+        else {
+            hotkey.unregister()
+            return
+        }
+        hotkey.sync(enabled: true, shortcut: shortcut, storageKey: key)
+    }
+
+    private func shortcutKey(for action: QuickToggleAction) -> String {
+        switch action {
+        case .darkMode: return DefaultsKey.panelToggleDarkModeShortcut
+        case .emptyTrash: return DefaultsKey.panelToggleEmptyTrashShortcut
+        case .ejectDisks: return DefaultsKey.panelToggleEjectDisksShortcut
+        case .hiddenFiles: return DefaultsKey.panelToggleHiddenFilesShortcut
+        case .desktopIcons: return DefaultsKey.panelToggleDesktopIconsShortcut
+        case .lockScreen: return DefaultsKey.panelToggleLockScreenShortcut
+        case .displayOff: return DefaultsKey.panelToggleDisplayOffShortcut
+        case .screenSaver: return DefaultsKey.panelToggleScreenSaverShortcut
+        case .micMute, .keyboardLight:
+            // Not synced by syncWithPreferences; unreachable.
+            return ""
+        }
     }
 
     private static func automationTarget(for action: QuickToggleAction) -> Permissions.AutomationTarget? {

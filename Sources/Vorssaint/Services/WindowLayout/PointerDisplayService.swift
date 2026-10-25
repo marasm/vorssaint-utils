@@ -26,7 +26,7 @@ final class PointerDisplayService: ObservableObject {
         let paused = WindowLayoutIgnoredApps.shared.contains(bundleID: front?.bundleIdentifier,
                                                              executablePath: front?.executableURL?.path)
         shortcutRegistrationFailed = !hotkey.sync(enabled: enabled && !paused,
-                                                  shortcut: GlobalShortcutRole.pointerNextDisplay.savedShortcut,
+                                                  shortcut: GlobalShortcutRole.pointerNextDisplay.savedShortcut!,
                                                   storageKey: DefaultsKey.pointerDisplayShortcut)
     }
 

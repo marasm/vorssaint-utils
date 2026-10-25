@@ -952,6 +952,8 @@ extension Strings {
         shortcutTakeOverCaption: "macOS riprende il tasto ogni volta che Vorssaint non è aperto o questa funzione è disattivata.",
         shortcutTakeOverDismiss: "Non prendere il controllo",
         shortcutUnavailable: "macOS ha rifiutato questa scorciatoia. Scegline un’altra.",
+        shortcutNotAssigned: "Non assegnato",
+        shortcuts: "Scorciatoie",
         shelfShortcutToggle: "Scorciatoia Shelf",
         switcherUsageHintFormat: "Tieni premuto %@ per spostarti; rilascia per attivare la finestra. Maiuscole o ← torna indietro; W chiude la finestra; Q chiude l’app; Esc annulla.",
         musicBlockSection: "Tasti multimediali",

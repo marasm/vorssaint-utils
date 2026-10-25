@@ -387,7 +387,7 @@ struct QuickLauncherView: View {
             Image(systemName: "keyboard")
                 .font(.system(size: 8.5))
                 .foregroundStyle(.tertiary)
-            Text(GlobalShortcutRole.quickLauncher.savedShortcut.displayString)
+            Text(GlobalShortcutRole.quickLauncher.savedShortcut!.displayString)
                 .font(.system(size: 9, weight: .semibold, design: .rounded))
                 .foregroundStyle(.tertiary)
             Spacer()

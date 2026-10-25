@@ -952,6 +952,8 @@ extension Strings {
         shortcutTakeOverCaption: "Vorssaint が起動していないとき、またはこの機能がオフのときは、macOS にキーが戻ります。",
         shortcutTakeOverDismiss: "引き継がない",
         shortcutUnavailable: "macOS がこのショートカットを拒否しました。別のものを選んでください。",
+        shortcutNotAssigned: "未割り当て",
+        shortcuts: "ショートカット",
         shelfShortcutToggle: "Shelf ショートカット",
         switcherUsageHintFormat: "%@ を押したまま移動し、放すとウインドウがアクティブになります。Shift または ← で戻る、W でウインドウを閉じ、Q でアプリを終了、Esc でキャンセルします。",
         musicBlockSection: "メディアキー",

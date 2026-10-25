@@ -335,6 +335,7 @@ final class FeatureRuntime: ObservableObject {
             RecentCaptureService.shared.syncWithPreferences()
         },
         .cameraPreview: { CameraPreviewService.shared.syncWithPreferences() },
+        .quickToggles: { QuickTogglesService.shared.syncWithPreferences() },
         .wallpaper: { WallpaperService.shared.syncWithPreferences() },
         .radialMenu: { RadialMenuService.shared.syncWithPreferences() },
         .notch: { NotchService.shared.syncWithPreferences() },

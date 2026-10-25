@@ -377,6 +377,15 @@ enum DefaultsKey {
     static let panelToggleLockScreen = "panelToggleLockScreen"
     static let panelToggleDisplayOff = "panelToggleDisplayOff"
     static let panelToggleScreenSaver = "panelToggleScreenSaver"
+    // Quick toggles — per-action global shortcuts (empty means unassigned).
+    static let panelToggleDarkModeShortcut = "panelToggleDarkModeShortcut"
+    static let panelToggleEmptyTrashShortcut = "panelToggleEmptyTrashShortcut"
+    static let panelToggleEjectDisksShortcut = "panelToggleEjectDisksShortcut"
+    static let panelToggleHiddenFilesShortcut = "panelToggleHiddenFilesShortcut"
+    static let panelToggleDesktopIconsShortcut = "panelToggleDesktopIconsShortcut"
+    static let panelToggleLockScreenShortcut = "panelToggleLockScreenShortcut"
+    static let panelToggleDisplayOffShortcut = "panelToggleDisplayOffShortcut"
+    static let panelToggleScreenSaverShortcut = "panelToggleScreenSaverShortcut"
 
     // System monitor — live metrics shown next to the menu bar icon (opt-in).
     static let menuBarCPU = "menuBarCPU"
@@ -1620,6 +1629,14 @@ enum Defaults {
         DefaultsKey.panelToggleLockScreen: true,
         DefaultsKey.panelToggleDisplayOff: true,
         DefaultsKey.panelToggleScreenSaver: true,
+        DefaultsKey.panelToggleDarkModeShortcut: "",
+        DefaultsKey.panelToggleEmptyTrashShortcut: "",
+        DefaultsKey.panelToggleEjectDisksShortcut: "",
+        DefaultsKey.panelToggleHiddenFilesShortcut: "",
+        DefaultsKey.panelToggleDesktopIconsShortcut: "",
+        DefaultsKey.panelToggleLockScreenShortcut: "",
+        DefaultsKey.panelToggleDisplayOffShortcut: "",
+        DefaultsKey.panelToggleScreenSaverShortcut: "",
         // Menu bar metrics start off (the icon stays clean) and are opt-in.
         // The panel shows every monitoring block by default; users hide what
         // they don't want.

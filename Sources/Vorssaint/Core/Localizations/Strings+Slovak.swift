@@ -952,6 +952,8 @@ extension Strings {
         shortcutTakeOverCaption: "macOS dostane kláves späť vždy, keď Vorssaint nebeží alebo je táto funkcia vypnutá.",
         shortcutTakeOverDismiss: "Nepreberať",
         shortcutUnavailable: "macOS túto skratku odmietol. Vyberte inú.",
+        shortcutNotAssigned: "Nepridelené",
+        shortcuts: "Skratky",
         shelfShortcutToggle: "Skratka police",
         switcherUsageHintFormat: "Podržaním %@ prechádzate oknami; pustením okno aktivujete. Shift alebo ← ide späť; W zatvorí okno; Q ukončí aplikáciu; Esc zruší.",
         musicBlockSection: "Multimediálne klávesy",

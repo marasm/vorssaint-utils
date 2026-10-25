@@ -1485,9 +1485,9 @@ enum RecorderFeatureTests {
         suite.expect(commandBarSettingsSource.contains("Toggle(text.shortcutToggle,")
                 && !commandBarSettingsSource.contains("l10n.s.quickToolShortcutToggle"),
                "the command bar shortcut toggle says what the shortcut opens")
-        suite.expect(Set(GlobalShortcutRole.allCases.map(\.defaultShortcut)).count
-                == GlobalShortcutRole.allCases.count,
-               "no two shortcut roles share a default combination")
+        let nonNilDefaults = GlobalShortcutRole.allCases.compactMap(\.defaultShortcut)
+        suite.expect(Set(nonNilDefaults).count == nonNilDefaults.count,
+               "non-nil shortcut defaults are unique (quick toggle shortcuts ship unassigned)")
 
         // A heavy, rare verb stays out of the list until it is asked for, in
         // every language the app speaks.

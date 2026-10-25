@@ -29,11 +29,38 @@ struct ShortcutsSettings: View {
         GlobalShortcutRole.captureRoles(in: availableRoles)
     }
 
+    /// Quick toggle roles that actually have a shortcut assigned.
+    /// Unassigned toggles are managed on the Quick Toggles settings page
+    /// instead of the central shortcuts list.
+    private var assignedQuickToggleRoles: [GlobalShortcutRole] {
+        availableRoles.filter { role in
+            role.feature == .quickToggles
+                && (UserDefaults.standard.string(forKey: role.storageKey) ?? "") != ""
+        }
+    }
+
     private var visibleGroups: [FeatureGroup] {
         FeatureGroup.allCases.filter { group in
             availableRoles.contains { $0.group == group }
                 || (group == .windowsDock && AppFeature.windowLayout.isAvailable)
         }
+    }
+
+    private func shortcutCount(for feature: AppFeature, roles: [GlobalShortcutRole]) -> Int {
+        if feature == .windowLayout {
+            return WindowLayoutAction.shortcutActions.count + roles.count
+        } else if feature == .quickToggles {
+            return assignedQuickToggleRoles.count
+        } else {
+            return roles.count
+        }
+    }
+
+    private func roles(for feature: AppFeature, in group: FeatureGroup) -> [GlobalShortcutRole] {
+        if feature == .quickToggles {
+            return assignedQuickToggleRoles.filter { $0.group == group }
+        }
+        return availableRoles.filter { $0.feature == feature && $0.group == group }
     }
 
     var body: some View {
@@ -87,6 +114,11 @@ struct ShortcutsSettings: View {
             if feature == .windowLayout {
                 return group == .windowsDock && feature.isAvailable
             }
+            // Quick Toggles only appear when the user has assigned shortcuts;
+            // unassigned toggles are managed on the Quick Toggles page.
+            if feature == .quickToggles {
+                return group == .tools && !assignedQuickToggleRoles.isEmpty
+            }
             return availableRoles.contains { $0.feature == feature && $0.group == group }
         }
     }
@@ -112,10 +144,8 @@ struct ShortcutsSettings: View {
 
     @ViewBuilder
     private func featureRows(_ feature: AppFeature, in group: FeatureGroup) -> some View {
-        let roles = availableRoles.filter { $0.feature == feature && $0.group == group }
-        let count = feature == .windowLayout
-            ? WindowLayoutAction.shortcutActions.count + roles.count
-            : roles.count
+        let roles = roles(for: feature, in: group)
+        let count = shortcutCount(for: feature, roles: roles)
         if feature == .radialMenu {
             RadialMenuShortcutsRow(text: text)
         } else if count > 1 {
@@ -263,7 +293,12 @@ struct ShortcutsSettings: View {
            WindowLayoutAction.shortcutActions.contains(where: { $0.savedShortcut != nil }) {
             return true
         }
-        return roles.contains { role in
+        // For quickToggles, only assigned shortcuts count as "active" here
+        // (unassigned ones are managed on the Quick Toggles page).
+        let activeRoles = feature == .quickToggles
+            ? roles.filter { (UserDefaults.standard.string(forKey: $0.storageKey) ?? "") != "" }
+            : roles
+        return activeRoles.contains { role in
             role.requiredEnableKeys.allSatisfy { UserDefaults.standard.bool(forKey: $0) }
         }
     }

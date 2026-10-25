@@ -1581,7 +1581,7 @@ enum FeatureCatalogTests {
                         isAvailable: { $0 != .brightness }).contains(role),
                    "display shortcuts follow feature availability")
             suite.expect((Defaults.registeredDefaults[role.storageKey] as? String)
-                    == role.defaultShortcut.storageValue,
+                    == role.defaultShortcut!.storageValue,
                    "display shortcut defaults match their registered preferences")
         }
         suite.expect(BrightnessSupport.shortcutDisplay(followsPointer: true, pointerDisplay: 2,

@@ -483,8 +483,8 @@ final class BrightnessService: ObservableObject {
     private func syncDisplayBrightnessHotkeys() {
         let enabled = running && AppFeature.brightness.isAvailable
             && UserDefaults.standard.bool(forKey: DefaultsKey.displayBrightnessShortcutsEnabled)
-        let decrease = GlobalShortcutRole.displayBrightnessDecrease.savedShortcut
-        let increase = GlobalShortcutRole.displayBrightnessIncrease.savedShortcut
+        let decrease = GlobalShortcutRole.displayBrightnessDecrease.savedShortcut!
+        let increase = GlobalShortcutRole.displayBrightnessIncrease.savedShortcut!
         let decreaseConflicts = enabled && decrease.conflictsWithSystemShortcut
             && !SystemShortcutTakeover.isTakenOver(GlobalShortcutRole.displayBrightnessDecrease.storageKey)
         let increaseConflicts = enabled && increase.conflictsWithSystemShortcut
@@ -525,8 +525,8 @@ final class BrightnessService: ObservableObject {
         let enabled = AppFeature.brightness.isAvailable
             && UserDefaults.standard.bool(forKey: DefaultsKey.keyboardBrightnessShortcutsEnabled)
             && keyboardLightBridge != nil
-        let decreaseShortcut = GlobalShortcutRole.keyboardBrightnessDecrease.savedShortcut
-        let increaseShortcut = GlobalShortcutRole.keyboardBrightnessIncrease.savedShortcut
+        let decreaseShortcut = GlobalShortcutRole.keyboardBrightnessDecrease.savedShortcut!
+        let increaseShortcut = GlobalShortcutRole.keyboardBrightnessIncrease.savedShortcut!
         let decreaseConflicts = enabled && decreaseShortcut.conflictsWithSystemShortcut
             && !SystemShortcutTakeover.isTakenOver(GlobalShortcutRole.keyboardBrightnessDecrease.storageKey)
         let increaseConflicts = enabled && increaseShortcut.conflictsWithSystemShortcut
