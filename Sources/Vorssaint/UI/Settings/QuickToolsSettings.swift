@@ -382,11 +382,6 @@ private struct QuickToggleShortcutRow: View {
                 Text(toggleTitle)
                 Spacer()
                 HStack(spacing: 8) {
-                    if hasShortcut, let shortcut = currentShortcut {
-                        Text(shortcut.displayString)
-                            .font(.caption.monospacedDigit())
-                            .foregroundStyle(.secondary)
-                    }
                     ShortcutRecorderButton(
                         shortcut: currentShortcut ?? GlobalShortcut(keyCode: 0, modifiers: []),
                         isEnabled: true,
