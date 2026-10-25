@@ -886,14 +886,14 @@ enum GlobalShortcutRole: CaseIterable, Identifiable {
             return FeatureStrings.brightness(L10n.shared.language).keyboardBrightnessIncrease
         case .pointerNextDisplay: return PointerDisplayStrings.localized(L10n.shared.language).title
         case .notch: return FeatureStrings.notch(L10n.shared.language).title
-        case .quickToggleDarkMode: return FeatureStrings.quickToggles(L10n.shared.language).shortcutDarkMode
-        case .quickToggleEmptyTrash: return FeatureStrings.quickToggles(L10n.shared.language).shortcutEmptyTrash
-        case .quickToggleEjectDisks: return FeatureStrings.quickToggles(L10n.shared.language).shortcutEjectDisks
-        case .quickToggleHiddenFiles: return FeatureStrings.quickToggles(L10n.shared.language).shortcutHiddenFiles
-        case .quickToggleDesktopIcons: return FeatureStrings.quickToggles(L10n.shared.language).shortcutDesktopIcons
-        case .quickToggleLockScreen: return FeatureStrings.quickToggles(L10n.shared.language).shortcutLockScreen
-        case .quickToggleDisplayOff: return FeatureStrings.quickToggles(L10n.shared.language).shortcutDisplayOff
-        case .quickToggleScreenSaver: return FeatureStrings.quickToggles(L10n.shared.language).shortcutScreenSaver
+        case .quickToggleDarkMode: return FeatureStrings.quickToggles(L10n.shared.language).darkModeToDark
+        case .quickToggleEmptyTrash: return FeatureStrings.quickToggles(L10n.shared.language).emptyTrashTitle
+        case .quickToggleEjectDisks: return FeatureStrings.quickToggles(L10n.shared.language).ejectTitle
+        case .quickToggleHiddenFiles: return FeatureStrings.quickToggles(L10n.shared.language).hiddenFilesShow
+        case .quickToggleDesktopIcons: return FeatureStrings.quickToggles(L10n.shared.language).desktopIconsShow
+        case .quickToggleLockScreen: return FeatureStrings.quickToggles(L10n.shared.language).lockScreenTitle
+        case .quickToggleDisplayOff: return FeatureStrings.quickToggles(L10n.shared.language).displayOffTitle
+        case .quickToggleScreenSaver: return FeatureStrings.quickToggles(L10n.shared.language).screenSaverTitle
         }
     }
 

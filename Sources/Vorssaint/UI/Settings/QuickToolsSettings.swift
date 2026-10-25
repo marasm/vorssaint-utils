@@ -417,15 +417,22 @@ private struct QuickToggleShortcutRow: View {
     }
 
     private var toggleTitle: String {
+        let strings = FeatureStrings.quickToggles(l10n.language)
         switch action {
-        case .darkMode: return FeatureStrings.quickToggles(l10n.language).shortcutDarkMode
-        case .emptyTrash: return FeatureStrings.quickToggles(l10n.language).shortcutEmptyTrash
-        case .ejectDisks: return FeatureStrings.quickToggles(l10n.language).shortcutEjectDisks
-        case .hiddenFiles: return FeatureStrings.quickToggles(l10n.language).shortcutHiddenFiles
-        case .desktopIcons: return FeatureStrings.quickToggles(l10n.language).shortcutDesktopIcons
-        case .lockScreen: return FeatureStrings.quickToggles(l10n.language).shortcutLockScreen
-        case .displayOff: return FeatureStrings.quickToggles(l10n.language).shortcutDisplayOff
-        case .screenSaver: return FeatureStrings.quickToggles(l10n.language).shortcutScreenSaver
+        case .darkMode:
+            return QuickTogglesService.shared.systemAppearanceIsDark == false
+                ? strings.darkModeToLight : strings.darkModeToDark
+        case .emptyTrash: return strings.emptyTrashTitle
+        case .ejectDisks: return strings.ejectTitle
+        case .hiddenFiles:
+            return QuickTogglesService.shared.hiddenFilesShown
+                ? strings.hiddenFilesShow : strings.hiddenFilesHide
+        case .desktopIcons:
+            return QuickTogglesService.shared.desktopIconsShown
+                ? strings.desktopIconsShow : strings.desktopIconsHide
+        case .lockScreen: return strings.lockScreenTitle
+        case .displayOff: return strings.displayOffTitle
+        case .screenSaver: return strings.screenSaverTitle
         case .micMute, .keyboardLight:
             // Excluded from the section; unreachable but required for exhaustiveness.
             return ""

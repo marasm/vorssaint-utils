@@ -32,14 +32,6 @@ struct QuickToggleFeatureStrings {
     let screenSaverTitle: String
     let screenSaverCaption: String
     let actionFailed: String
-    let shortcutDarkMode: String
-    let shortcutEmptyTrash: String
-    let shortcutEjectDisks: String
-    let shortcutHiddenFiles: String
-    let shortcutDesktopIcons: String
-    let shortcutLockScreen: String
-    let shortcutDisplayOff: String
-    let shortcutScreenSaver: String
 }
 
 extension FeatureStrings {
@@ -90,15 +82,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "The Mac keeps running with the display off.",
         screenSaverTitle: "Start the screen saver",
         screenSaverCaption: "Starts right away, on every display.",
-        actionFailed: "Could not complete.",
-        shortcutDarkMode: "Dark mode",
-        shortcutEmptyTrash: "Empty Trash",
-        shortcutEjectDisks: "Eject all disks",
-        shortcutHiddenFiles: "Show/hide hidden files",
-        shortcutDesktopIcons: "Show/hide desktop icons",
-        shortcutLockScreen: "Lock screen",
-        shortcutDisplayOff: "Turn off display",
-        shortcutScreenSaver: "Start screen saver"
+        actionFailed: "Could not complete."
     )
 
     static let ptBR = QuickToggleFeatureStrings(
@@ -126,15 +110,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "O Mac continua funcionando com a tela apagada.",
         screenSaverTitle: "Iniciar o protetor de tela",
         screenSaverCaption: "Começa na hora, em todas as telas.",
-        actionFailed: "Não foi possível concluir.",
-        shortcutDarkMode: "Modo escuro",
-        shortcutEmptyTrash: "Esvaziar Lixeira",
-        shortcutEjectDisks: "Ejetar discos",
-        shortcutHiddenFiles: "Mostrar/ocultar ocultos",
-        shortcutDesktopIcons: "Mostrar/ocultar ícones",
-        shortcutLockScreen: "Bloquear tela",
-        shortcutDisplayOff: "Desligar tela",
-        shortcutScreenSaver: "Iniciar protetor"
+        actionFailed: "Não foi possível concluir."
     )
 
     static let tr = QuickToggleFeatureStrings(
@@ -162,15 +138,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "Mac ekran kapalıyken çalışmaya devam eder.",
         screenSaverTitle: "Ekran koruyucuyu başlat",
         screenSaverCaption: "Hemen, tüm ekranlarda başlar.",
-        actionFailed: "Tamamlanamadı.",
-        shortcutDarkMode: "Karanlık mod",
-        shortcutEmptyTrash: "Çöp Sepeti’ni boşalt",
-        shortcutEjectDisks: "Diskleri çıkar",
-        shortcutHiddenFiles: "Gizli dosyaları göster/gizle",
-        shortcutDesktopIcons: "Masaüstü simgelerini göster/gizle",
-        shortcutLockScreen: "Ekranı kilitle",
-        shortcutDisplayOff: "Ekranı kapat",
-        shortcutScreenSaver: "Ekran koruyucuyu başlat"
+        actionFailed: "Tamamlanamadı."
     )
 
     static let ru = QuickToggleFeatureStrings(
@@ -198,15 +166,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "Mac продолжает работать с выключенным экраном.",
         screenSaverTitle: "Запустить заставку",
         screenSaverCaption: "Запускается сразу на всех экранах.",
-        actionFailed: "Не удалось выполнить.",
-        shortcutDarkMode: "Тёмный режим",
-        shortcutEmptyTrash: "Очистить Корзину",
-        shortcutEjectDisks: "Извлечь диски",
-        shortcutHiddenFiles: "Показать/скрыть скрытые файлы",
-        shortcutDesktopIcons: "Показать/скрыть значки рабочего стола",
-        shortcutLockScreen: "Заблокировать экран",
-        shortcutDisplayOff: "Выключить экран",
-        shortcutScreenSaver: "Запустить заставку"
+        actionFailed: "Не удалось выполнить."
     )
 
     static let es = QuickToggleFeatureStrings(
@@ -234,15 +194,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "El Mac sigue funcionando con la pantalla apagada.",
         screenSaverTitle: "Iniciar el salvapantallas",
         screenSaverCaption: "Empieza al momento, en todas las pantallas.",
-        actionFailed: "No se pudo completar.",
-        shortcutDarkMode: "Modo oscuro",
-        shortcutEmptyTrash: "Vaciar Papelera",
-        shortcutEjectDisks: "Expulsar discos",
-        shortcutHiddenFiles: "Mostrar/ocultar ocultos",
-        shortcutDesktopIcons: "Mostrar/ocultar iconos",
-        shortcutLockScreen: "Bloquear pantalla",
-        shortcutDisplayOff: "Apagar pantalla",
-        shortcutScreenSaver: "Iniciar salvapantallas"
+        actionFailed: "No se pudo completar."
     )
 
     static let sk = QuickToggleFeatureStrings(
@@ -270,15 +222,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "Mac beží ďalej aj s vypnutou obrazovkou.",
         screenSaverTitle: "Spustiť šetrič obrazovky",
         screenSaverCaption: "Spustí sa hneď, na všetkých displejoch.",
-        actionFailed: "Nepodarilo sa dokončiť.",
-        shortcutDarkMode: "Tmavý režim",
-        shortcutEmptyTrash: "Vyprázdniť Kôš",
-        shortcutEjectDisks: "Vysunúť disky",
-        shortcutHiddenFiles: "Zobraziť/skryť skryté",
-        shortcutDesktopIcons: "Zobraziť/skryť ikony",
-        shortcutLockScreen: "Uzamknúť obrazovku",
-        shortcutDisplayOff: "Vypnúť displej",
-        shortcutScreenSaver: "Spustiť šetrič"
+        actionFailed: "Nepodarilo sa dokončiť."
     )
 
     static let de = QuickToggleFeatureStrings(
@@ -306,15 +250,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "Der Mac läuft mit ausgeschaltetem Bildschirm weiter.",
         screenSaverTitle: "Bildschirmschoner starten",
         screenSaverCaption: "Startet sofort, auf allen Bildschirmen.",
-        actionFailed: "Konnte nicht abgeschlossen werden.",
-        shortcutDarkMode: "Dunkelmodus",
-        shortcutEmptyTrash: "Papierkorb entleeren",
-        shortcutEjectDisks: "Festplatten auswerfen",
-        shortcutHiddenFiles: "Versteckte Dateien einblenden/ausblenden",
-        shortcutDesktopIcons: "Schreibtischsymbole einblenden/ausblenden",
-        shortcutLockScreen: "Bildschirm sperren",
-        shortcutDisplayOff: "Bildschirm ausschalten",
-        shortcutScreenSaver: "Bildschirmschoner starten"
+        actionFailed: "Konnte nicht abgeschlossen werden."
     )
 
     static let fr = QuickToggleFeatureStrings(
@@ -342,15 +278,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "Le Mac continue de fonctionner écran éteint.",
         screenSaverTitle: "Lancer l’économiseur d’écran",
         screenSaverCaption: "Démarre aussitôt, sur tous les écrans.",
-        actionFailed: "Impossible de terminer.",
-        shortcutDarkMode: "Mode sombre",
-        shortcutEmptyTrash: "Vider la Corbeille",
-        shortcutEjectDisks: "Éjecter les disques",
-        shortcutHiddenFiles: "Afficher/masquer les masqués",
-        shortcutDesktopIcons: "Afficher/masquer les icônes",
-        shortcutLockScreen: "Verrouiller l’écran",
-        shortcutDisplayOff: "Éteindre l’écran",
-        shortcutScreenSaver: "Lancer l’économiseur"
+        actionFailed: "Impossible de terminer."
     )
 
     static let it = QuickToggleFeatureStrings(
@@ -378,15 +306,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "Il Mac continua a funzionare con lo schermo spento.",
         screenSaverTitle: "Avvia il salvaschermo",
         screenSaverCaption: "Parte subito, su tutti gli schermi.",
-        actionFailed: "Impossibile completare.",
-        shortcutDarkMode: "Modalità scura",
-        shortcutEmptyTrash: "Svuota Cestino",
-        shortcutEjectDisks: "Espelli dischi",
-        shortcutHiddenFiles: "Mostra/nascondi nascosti",
-        shortcutDesktopIcons: "Mostra/nascondi icone",
-        shortcutLockScreen: "Blocca schermo",
-        shortcutDisplayOff: "Spegni schermo",
-        shortcutScreenSaver: "Avvia salvaschermo"
+        actionFailed: "Impossibile completare."
     )
 
     static let ja = QuickToggleFeatureStrings(
@@ -414,15 +334,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "画面を消しても Mac は動き続けます。",
         screenSaverTitle: "スクリーンセーバを開始",
         screenSaverCaption: "すべてのディスプレイですぐに始まります。",
-        actionFailed: "完了できませんでした。",
-        shortcutDarkMode: "ダークモード",
-        shortcutEmptyTrash: "ゴミ箱を空にする",
-        shortcutEjectDisks: "ディスクを取り出す",
-        shortcutHiddenFiles: "不可視ファイルを表示/隠す",
-        shortcutDesktopIcons: "デスクトップアイコンを表示/隠す",
-        shortcutLockScreen: "画面をロック",
-        shortcutDisplayOff: "ディスプレイをオフ",
-        shortcutScreenSaver: "スクリーンセーバ開始"
+        actionFailed: "完了できませんでした。"
     )
 
     static let ko = QuickToggleFeatureStrings(
@@ -450,15 +362,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "화면이 꺼져도 Mac은 계속 작동합니다.",
         screenSaverTitle: "화면 보호기 시작",
         screenSaverCaption: "모든 디스플레이에서 바로 시작됩니다.",
-        actionFailed: "완료할 수 없습니다.",
-        shortcutDarkMode: "다크 모드",
-        shortcutEmptyTrash: "휴지통 비우기",
-        shortcutEjectDisks: "디스크 추출",
-        shortcutHiddenFiles: "숨겨진 파일 보기/가리기",
-        shortcutDesktopIcons: "데스크탑 아이콘 보기/가리기",
-        shortcutLockScreen: "화면 잠금",
-        shortcutDisplayOff: "디스플레이 끄기",
-        shortcutScreenSaver: "화면 보호기 시작"
+        actionFailed: "완료할 수 없습니다."
     )
 
     static let zhHans = QuickToggleFeatureStrings(
@@ -486,15 +390,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "显示器关闭后 Mac 继续运行。",
         screenSaverTitle: "启动屏幕保护程序",
         screenSaverCaption: "在所有显示器上立即启动。",
-        actionFailed: "无法完成。",
-        shortcutDarkMode: "深色模式",
-        shortcutEmptyTrash: "清倒废纸篓",
-        shortcutEjectDisks: "推出磁盘",
-        shortcutHiddenFiles: "显示/隐藏隐藏文件",
-        shortcutDesktopIcons: "显示/隐藏桌面图标",
-        shortcutLockScreen: "锁定屏幕",
-        shortcutDisplayOff: "关闭显示器",
-        shortcutScreenSaver: "启动屏幕保护"
+        actionFailed: "无法完成。"
     )
 
     static let zhTW = QuickToggleFeatureStrings(
@@ -522,15 +418,7 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "螢幕關閉後 Mac 仍繼續運作。",
         screenSaverTitle: "啟動螢幕保護程式",
         screenSaverCaption: "在所有顯示器上立即啟動。",
-        actionFailed: "無法完成。",
-        shortcutDarkMode: "深色模式",
-        shortcutEmptyTrash: "清空垃圾桶",
-        shortcutEjectDisks: "退出磁碟",
-        shortcutHiddenFiles: "顯示/隱藏隱藏檔案",
-        shortcutDesktopIcons: "顯示/隱藏桌面圖示",
-        shortcutLockScreen: "鎖定螢幕",
-        shortcutDisplayOff: "關閉顯示器",
-        shortcutScreenSaver: "啟動螢幕保護"
+        actionFailed: "無法完成。"
     )
 
     static let zhHK = QuickToggleFeatureStrings(
@@ -558,16 +446,9 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "螢幕關閉後 Mac 仍繼續運作。",
         screenSaverTitle: "啟動螢幕保護程式",
         screenSaverCaption: "在所有顯示器上立即啟動。",
-        actionFailed: "無法完成。",
-        shortcutDarkMode: "深色模式",
-        shortcutEmptyTrash: "清空垃圾桶",
-        shortcutEjectDisks: "推出磁碟",
-        shortcutHiddenFiles: "顯示/隱藏隱藏檔案",
-        shortcutDesktopIcons: "顯示/隱藏桌面圖示",
-        shortcutLockScreen: "鎖定螢幕",
-        shortcutDisplayOff: "關閉顯示器",
-        shortcutScreenSaver: "啟動螢幕保護"
+        actionFailed: "無法完成。"
     )
+
     static let uk = QuickToggleFeatureStrings(
         pageTitle: "Швидкі перемикачі",
         hubDescription: "Дії в один клік, як-от темний режим і Смітник",
@@ -593,14 +474,6 @@ extension QuickToggleFeatureStrings {
         displayOffCaption: "Mac продовжує працювати з вимкненим екраном.",
         screenSaverTitle: "Запустити зберігач екрана",
         screenSaverCaption: "Запускається одразу, на кожному дисплеї.",
-        actionFailed: "Не вдалося завершити.",
-        shortcutDarkMode: "Темний режим",
-        shortcutEmptyTrash: "Очистити Смітник",
-        shortcutEjectDisks: "Вийняти диски",
-        shortcutHiddenFiles: "Показати/сховати приховані",
-        shortcutDesktopIcons: "Показати/сховати значки",
-        shortcutLockScreen: "Заблокувати екран",
-        shortcutDisplayOff: "Вимкнути дисплей",
-        shortcutScreenSaver: "Запустити зберігач"
+        actionFailed: "Не вдалося завершити."
     )
 }
