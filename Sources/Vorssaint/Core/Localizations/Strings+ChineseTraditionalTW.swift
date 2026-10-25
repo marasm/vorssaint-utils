@@ -953,6 +953,8 @@ extension Strings {
         shortcutTakeOverCaption: "只要 Vorssaint 未執行或此功能已關閉，macOS 就會取回該按鍵。",
         shortcutTakeOverDismiss: "不接管",
         shortcutUnavailable: "macOS 拒絕使用此快速鍵。請改用另一個。",
+        shortcutNotAssigned: "未指派",
+        shortcuts: "快速鍵",
         shelfShortcutToggle: "暫存架快速鍵",
         switcherUsageHintFormat: "按住 %@ 瀏覽；放開即可切換到視窗。Shift 或 ← 返回；W 關閉視窗；Q 結束 App；Esc 取消。",
         musicBlockSection: "媒體鍵",

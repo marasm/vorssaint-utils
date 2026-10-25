@@ -922,6 +922,8 @@ extension Strings {
         shortcutTakeOverCaption: "Коли Vorssaint не працює або цю функцію вимкнено, клавіші знову обробляє macOS.",
         shortcutTakeOverDismiss: "Не перехоплювати",
         shortcutUnavailable: "macOS відхилила це клавіатурне скорочення. Виберіть інше.",
+        shortcutNotAssigned: "Не призначено",
+        shortcuts: "Гарячі клавіші",
         shelfShortcutToggle: "Клавіатурне скорочення полиці",
         switcherUsageHintFormat: "Утримуйте %@ для навігації; відпустіть, щоб активувати вікно. Shift або ← повертає назад; W закриває вікно; Q завершує програму; Esc скасовує.",
         musicBlockSection: "Медіаклавіші",

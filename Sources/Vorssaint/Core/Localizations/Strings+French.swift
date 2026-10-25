@@ -952,6 +952,8 @@ extension Strings {
         shortcutTakeOverCaption: "macOS récupère la touche dès que Vorssaint n’est pas ouvert ou que cette fonction est désactivée.",
         shortcutTakeOverDismiss: "Ne pas prendre la main",
         shortcutUnavailable: "macOS a refusé ce raccourci. Choisissez-en un autre.",
+        shortcutNotAssigned: "Non attribué",
+        shortcuts: "Raccourcis",
         shelfShortcutToggle: "Raccourci Shelf",
         switcherUsageHintFormat: "Maintenez %@ pour naviguer\u{00A0}; relâchez pour activer la fenêtre. Maj ou ← revient en arrière\u{00A0}; W ferme la fenêtre\u{00A0}; Q quitte l’app\u{00A0}; Échap annule.",
         musicBlockSection: "Touches multimédias",

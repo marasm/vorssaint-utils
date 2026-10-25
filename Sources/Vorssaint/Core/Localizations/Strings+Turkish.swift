@@ -952,6 +952,8 @@ extension Strings {
         shortcutTakeOverCaption: "Vorssaint çalışmadığında ya da bu özellik kapalıyken tuşu macOS geri alır.",
         shortcutTakeOverDismiss: "Devralma",
         shortcutUnavailable: "macOS bu kısayolu reddetti. Başka birini seç.",
+        shortcutNotAssigned: "Atanmadı",
+        shortcuts: "Kısayollar",
         shelfShortcutToggle: "Raf kısayolu",
         switcherUsageHintFormat: "Gezinmek için %@ tuşunu basılı tut; pencereyi etkinleştirmek için bırak. Shift veya ← geri gider; W pencereyi kapatır; Q uygulamadan çıkar; Esc iptal eder.",
         musicBlockSection: "Medya tuşları",

@@ -952,6 +952,8 @@ extension Strings {
         shortcutTakeOverCaption: "macOS bekommt die Taste zurück, sobald Vorssaint nicht läuft oder diese Funktion aus ist.",
         shortcutTakeOverDismiss: "Nicht übernehmen",
         shortcutUnavailable: "macOS hat diesen Kurzbefehl abgelehnt. Wähle einen anderen.",
+        shortcutNotAssigned: "Nicht zugewiesen",
+        shortcuts: "Tastenkürzel",
         shelfShortcutToggle: "Shelf-Kurzbefehl",
         switcherUsageHintFormat: "Halte %@ zum Navigieren; loslassen, um das Fenster zu aktivieren. Umschalt oder ← geht zurück; W schließt das Fenster; Q beendet die App; Esc bricht ab.",
         musicBlockSection: "Medientasten",

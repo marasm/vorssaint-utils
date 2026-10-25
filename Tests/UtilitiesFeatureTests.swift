@@ -701,9 +701,9 @@ enum UtilitiesFeatureTests {
                 && GlobalShortcutRole.snippetLibrary.requiredEnableKeys == [DefaultsKey.snippetLibraryEnabled]
                 && GlobalShortcutRole.snippetLibrary.feature == .textSnippets,
                "the library shortcut role is wired to its own keys and the snippets feature")
-        let roleDefaults = GlobalShortcutRole.allCases.map(\.defaultShortcut)
+        let roleDefaults = GlobalShortcutRole.allCases.compactMap(\.defaultShortcut)
         suite.expect(Set(roleDefaults).count == roleDefaults.count,
-               "no two shortcut roles ship the same default combination")
+               "non-nil shortcut defaults are unique (quick toggle shortcuts ship unassigned)")
 
         // MARK: Radial menu (issue #220)
 

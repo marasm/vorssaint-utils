@@ -448,6 +448,7 @@ extension QuickToggleFeatureStrings {
         screenSaverCaption: "在所有顯示器上立即啟動。",
         actionFailed: "無法完成。"
     )
+
     static let uk = QuickToggleFeatureStrings(
         pageTitle: "Швидкі перемикачі",
         hubDescription: "Дії в один клік, як-от темний режим і Смітник",

@@ -48,10 +48,21 @@ enum UpdateFeatureTests {
         }
         // MARK: Update installer helpers
 
-        suite.expect(GlobalShortcutRole.activeRoles(isOn: { _ in false }).isEmpty,
-               "no enabled gates means no active shortcuts")
+        let quickToggleKeys = Set([
+            DefaultsKey.panelToggleDarkModeShortcut,
+            DefaultsKey.panelToggleEmptyTrashShortcut,
+            DefaultsKey.panelToggleEjectDisksShortcut,
+            DefaultsKey.panelToggleHiddenFilesShortcut,
+            DefaultsKey.panelToggleDesktopIconsShortcut,
+            DefaultsKey.panelToggleLockScreenShortcut,
+            DefaultsKey.panelToggleDisplayOffShortcut,
+            DefaultsKey.panelToggleScreenSaverShortcut,
+        ])
+        let activeKeys = Set(GlobalShortcutRole.activeRoles(isOn: { _ in false }).map(\.storageKey))
+        suite.expect(quickToggleKeys.isSubset(of: activeKeys),
+               "quick toggle shortcuts have no enable gates and show as active when available")
         suite.expect(GlobalShortcutRole.activeRoles(isOn: { $0 == DefaultsKey.hotkeyEnabled })
-                   == [.keepAwake],
+                    .contains(.keepAwake),
                "keep awake activates on its own gate alone")
         suite.expect(!GlobalShortcutRole.activeRoles(isOn: { $0 == DefaultsKey.clipboardHistoryShortcutEnabled })
                    .contains(.clipboard),

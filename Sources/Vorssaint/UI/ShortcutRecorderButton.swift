@@ -351,7 +351,13 @@ struct ShortcutPreferenceRow: View {
         self.reservesClearButtonSpace = reservesClearButtonSpace
         self.additionalConflict = additionalConflict
         self.onChange = onChange
-        _rawValue = AppStorage(wrappedValue: role.defaultShortcut.storageValue, role.storageKey)
+        let defaultValue: String
+        if let defaultShortcut = role.defaultShortcut {
+            defaultValue = defaultShortcut.storageValue
+        } else {
+            defaultValue = ""
+        }
+        _rawValue = AppStorage(wrappedValue: defaultValue, role.storageKey)
     }
 
     var body: some View {
@@ -390,7 +396,7 @@ struct ShortcutPreferenceRow: View {
                                 .accessibilityHidden(true)
                         }
                         Button(l10n.s.shortcutReset) {
-                            rawValue = role.defaultShortcut.storageValue
+                            rawValue = role.defaultShortcut?.storageValue ?? ""
                             errorText = nil
                             pendingTakeOver = nil
                             SystemShortcutTakeover.setTakeOver(role.storageKey, false)
@@ -435,7 +441,13 @@ struct ShortcutPreferenceRow: View {
     }
 
     private var shortcut: GlobalShortcut {
-        GlobalShortcut(storageValue: rawValue) ?? role.defaultShortcut
+        if let stored = GlobalShortcut(storageValue: rawValue) {
+            return stored
+        }
+        if let defaultShortcut = role.defaultShortcut {
+            return defaultShortcut
+        }
+        return GlobalShortcut(keyCode: 0, modifiers: [])
     }
 
     private var superKeyAlternative: String? {
